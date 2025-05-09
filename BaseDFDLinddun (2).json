@@ -1,0 +1,3285 @@
+{
+  "version": "2.4.1",
+  "summary": {
+    "title": "Secure Flood Rescue System using MQTT",
+    "owner": "Hussam",
+    "description": "This system uses IoT-centric technology to implement emergency communication during floods. Survivors communicate their GPS positions and threat levels through a mobile application via drones. The relayed messages are sent to the cloud-based MQTT broker where they are saved in the database and visualized on a dashboard (Grafana) for the responding units. User devices, drone MQTT brokers (in bridge mode), central cloud MQTT broker, SQL databases, and visual KPI dashboards are some of the device-centric components of the system.\n\n\n",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "New Linddun diagram",
+        "diagramType": "LINDDUN",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.4.1",
+        "cells": [
+          {
+            "position": {
+              "x": -830.0000000000026,
+              "y": -410.00000000000773
+            },
+            "size": {
+              "width": 1470,
+              "height": 840
+            },
+            "attrs": {
+              "headerText": {
+                "text": "Disaster Response System"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "c08549cf-82bb-41fc-a489-0a1698a298dd",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Disaster Response System",
+              "description": " A Mosquitto MQTT broker running on a drone, operating in bridge mode to forward messages to the cloud.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": -802,
+              "y": -220.00000000000114
+            },
+            "size": {
+              "width": 730,
+              "height": 550
+            },
+            "attrs": {
+              "headerText": {
+                "text": "\n\nCloud Broker\n\n"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "a5840ba8-d4e3-4923-bcb6-9d1cd5f9f2ed",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "\n\nCloud Broker\n\n",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 71,
+              "y": 78.99999999999935
+            },
+            "size": {
+              "width": 490,
+              "height": 310
+            },
+            "attrs": {
+              "headerText": {
+                "text": "Dashboard Stage"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "6db6cb97-6540-4cb8-a51a-27454396f3e9",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Dashboard Stage",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 30.000000000000057,
+              "y": -380.000000000002
+            },
+            "size": {
+              "width": 590,
+              "height": 420
+            },
+            "attrs": {
+              "headerText": {
+                "text": "Gateway / Edge Stage"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "5fd24e24-4ec3-4dd5-9282-1f91a8b66c81",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Gateway / Edge Stage",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 980,
+              "y": -135.00000000000117
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Victim (App User)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 0,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "1fa7ae43-ca15-4378-a27e-7a0e2ff3320a"
+                },
+                {
+                  "group": "right",
+                  "id": "474469c4-d2d1-4f5c-b3a1-e71be949c2fe"
+                },
+                {
+                  "group": "bottom",
+                  "id": "4ea369e4-a08f-462a-874b-01a77a1bf739"
+                },
+                {
+                  "group": "left",
+                  "id": "55d00aac-938d-400c-a195-3768b9e69550"
+                }
+              ]
+            },
+            "id": "54aa73e6-6a7c-4d39-89e6-a1c27f83d914",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Victim (App User)",
+              "description": "A person in the disaster zone using the rescue app to send distress messages.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "L01",
+                  "title": "Traceable Actor Participation",
+                  "type": "Non-repudiation",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Actors' activities may be logged in a way that removes plausible deniability and creates surveillance risks.",
+                  "mitigation": "Limit persistent logging or anonymize logs when possible.",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 938.75,
+              "y": 219.99999999999886
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "CMC Operator"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "74f28c8f-707f-4e8a-b4f3-73f816a57876"
+                },
+                {
+                  "group": "right",
+                  "id": "6d701e2d-9370-44e6-99a2-5a9060d613c0"
+                },
+                {
+                  "group": "bottom",
+                  "id": "9813ce46-b484-4ca1-ba4b-4eae519eb9aa"
+                },
+                {
+                  "group": "left",
+                  "id": "085f07dd-ed95-45fd-be2a-544a22b33ec7"
+                }
+              ]
+            },
+            "id": "3c1372d1-d3c7-4236-9def-fa6b05520e20",
+            "data": {
+              "type": "tm.Actor",
+              "name": "CMC Operator",
+              "description": "The person who monitors the dashboard and coordinates rescue efforts.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "L02",
+                  "title": "Traceable Actor Participation",
+                  "type": "Non-repudiation",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Actors' activities may be logged in a way that removes plausible deniability and creates surveillance risks.",
+                  "mitigation": "Limit persistent logging or anonymize logs when possible.",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 830,
+              "y": 369
+            },
+            "size": {
+              "width": 170,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Field Response Team"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "f9081971-374a-4e73-8c4c-8f92775ae727"
+                },
+                {
+                  "group": "right",
+                  "id": "4fddc492-c999-4f95-a5f9-417b943381ca"
+                },
+                {
+                  "group": "bottom",
+                  "id": "fa3d3aa5-99a7-4e49-9b86-61952818e68a"
+                },
+                {
+                  "group": "left",
+                  "id": "61bf74fd-3bab-4897-b16d-87aab24aedf1"
+                }
+              ]
+            },
+            "id": "7e29d904-0fe3-4162-b3d2-ed7cf1fef279",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Field Response Team",
+              "description": "The team that receives commands from the dashboard and goes to rescue victims.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "L03",
+                  "title": "Traceable Actor Participation",
+                  "type": "Non-repudiation",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Actors' activities may be logged in a way that removes plausible deniability and creates surveillance risks.",
+                  "mitigation": "Limit persistent logging or anonymize logs when possible.",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": -360,
+              "y": -160.00000000000117
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "SQL Database"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 3,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "ea054a05-2100-4dbe-8aa2-52017603723b"
+                },
+                {
+                  "group": "right",
+                  "id": "b23e42c2-a6cf-443c-bd2e-8079e06a9c25"
+                },
+                {
+                  "group": "bottom",
+                  "id": "0bb46f94-3e56-4403-ad71-228e22f4926c"
+                },
+                {
+                  "group": "left",
+                  "id": "9f1e9002-9bc9-453e-9778-17cb3a303277"
+                }
+              ]
+            },
+            "id": "be87884f-547c-4c9f-b975-6ca53e4b7e4d",
+            "data": {
+              "type": "tm.Store",
+              "name": "SQL Database",
+              "description": "Stores survivor messages sent from the rescue app, including severity level and GPS data.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "L04",
+                  "title": "Improper Data Retention",
+                  "type": "Non-compliance",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Stored data is kept beyond its necessary duration or without proper consent, risking regulatory non-compliance.",
+                  "mitigation": "Apply automated data retention policies and obtain clear consent.",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 808.75,
+              "y": -11.000000000000654
+            },
+            "size": {
+              "width": 90,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Rescue App"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 5,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3512eedf-0ea0-48c0-8c72-b80ea05ab321"
+                },
+                {
+                  "group": "right",
+                  "id": "4c2a3661-f652-4af9-b77b-87944f70b567"
+                },
+                {
+                  "group": "bottom",
+                  "id": "81cc270a-60e6-48b8-82ed-acafaece0839"
+                },
+                {
+                  "group": "left",
+                  "id": "1af71300-d16b-4147-a45f-5b7fd1402dbe"
+                }
+              ]
+            },
+            "id": "fde4d527-38ce-495d-9c09-6ae9325900c0",
+            "data": {
+              "type": "tm.Process",
+              "name": "Rescue App",
+              "description": "Mobile application used by victims to send distress signals (location + severity level) via MQTT.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L05",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 82.99999999999977,
+              "y": -175.00000000000117
+            },
+            "size": {
+              "width": 190,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "MQTT Bridge Broker"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 6,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "5dd0b28f-530b-4c57-9bce-232ee19d6225"
+                },
+                {
+                  "group": "right",
+                  "id": "70ed1455-ff8c-43af-a1ab-6fbe77eb3caf"
+                },
+                {
+                  "group": "bottom",
+                  "id": "9a1316ea-1a4f-4571-a3cb-681f0e0cb27b"
+                },
+                {
+                  "group": "left",
+                  "id": "c61101a9-50ff-46a7-a6aa-755aab45f99d"
+                }
+              ]
+            },
+            "id": "17ab99b9-e910-462c-858f-f8905065862d",
+            "data": {
+              "type": "tm.Process",
+              "name": "MQTT Bridge Broker",
+              "description": "A Mosquitto broker running on drones in bridge mode, forwarding MQTT messages from survivors to the central broker in the cloud.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L06",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": -847.0000000000002,
+              "y": -160.00000000000117
+            },
+            "size": {
+              "width": 250,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "MQTT Central Broker"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 7,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "8dd39f1e-d34f-405e-bf37-c4c78d475898"
+                },
+                {
+                  "group": "right",
+                  "id": "006edda8-d470-4d7b-9c36-51fdf1729db3"
+                },
+                {
+                  "group": "bottom",
+                  "id": "150dac80-bce6-4331-adfd-54fbd43020b9"
+                },
+                {
+                  "group": "left",
+                  "id": "e8fcbde1-3b08-4e2a-8a61-d51e504fee2d"
+                }
+              ]
+            },
+            "id": "97a6768c-d981-4293-b393-633fb520a17d",
+            "data": {
+              "type": "tm.Process",
+              "name": "MQTT Central Broker",
+              "description": "Cloud-hosted Mosquitto broker that receives messages from edge drones and publishes them to the integration service.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L07",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": -517,
+              "y": 119
+            },
+            "size": {
+              "width": 230,
+              "height": 170
+            },
+            "attrs": {
+              "text": {
+                "text": "Cloud Integration Service"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 8,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3435fba8-4990-48be-86fd-3d8c1ec0f245"
+                },
+                {
+                  "group": "right",
+                  "id": "5677da8f-7db6-4e88-8297-5f97e3ccca43"
+                },
+                {
+                  "group": "bottom",
+                  "id": "d380f002-7808-45b1-b9e8-ae835051e616"
+                },
+                {
+                  "group": "left",
+                  "id": "09e65503-a611-432f-985b-e2ffe5d92b04"
+                }
+              ]
+            },
+            "id": "ca455f56-51b6-4e7b-bc22-5b3f26cab2ba",
+            "data": {
+              "type": "tm.Process",
+              "name": "Cloud Integration Service",
+              "description": " A backend Python service that subscribes to MQTT messages and inserts them into the SQL database.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L08",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 132.99999999999977,
+              "y": 219.99999999999886
+            },
+            "size": {
+              "width": 140,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "Graphics"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 9,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "97e84d5e-e3d5-46c5-87f1-943411a9d77b"
+                },
+                {
+                  "group": "right",
+                  "id": "34100ce9-f22e-4c9c-87fa-326fb814acb5"
+                },
+                {
+                  "group": "bottom",
+                  "id": "bbe9f566-c148-4240-b611-83e6c132e43f"
+                },
+                {
+                  "group": "left",
+                  "id": "23c3b6e2-ad3b-4442-b663-3f9889eda9f1"
+                }
+              ]
+            },
+            "id": "d890fccd-c5b5-415f-b9b5-b0a209ddfe38",
+            "data": {
+              "type": "tm.Process",
+              "name": "Graphics",
+              "description": "Generates visuals like maps and severity overlays from survivor data.\n\n",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L09",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "enter location & severity",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L10",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                },
+                {
+                  "id": "L11",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "enter location & severity"
+            ],
+            "id": "1bda5dde-4d5c-4aa9-9d62-b1fe3e57d43d",
+            "source": {
+              "cell": "54aa73e6-6a7c-4d39-89e6-a1c27f83d914"
+            },
+            "target": {
+              "cell": "fde4d527-38ce-495d-9c09-6ae9325900c0"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "MQTT publish srv/rescue",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L12",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                },
+                {
+                  "id": "L13",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "MQTT publish srv/rescue"
+            ],
+            "id": "0a1ecaf1-11b3-45aa-a0a7-dafd8f0d7480",
+            "source": {
+              "cell": "97a6768c-d981-4293-b393-633fb520a17d"
+            },
+            "target": {
+              "cell": "ca455f56-51b6-4e7b-bc22-5b3f26cab2ba"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "SQL insert survivor message",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L14",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                },
+                {
+                  "id": "L15",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "SQL insert survivor message"
+            ],
+            "id": "f4779d5c-4bb1-454a-904d-3f5c45e8e3ce",
+            "source": {
+              "cell": "ca455f56-51b6-4e7b-bc22-5b3f26cab2ba"
+            },
+            "target": {
+              "cell": "be87884f-547c-4c9f-b975-6ca53e4b7e4d"
+            },
+            "vertices": [
+              {
+                "x": -390.5,
+                "y": -40
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "forward message (bridge mode)",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L16",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                },
+                {
+                  "id": "L17",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "forward message (bridge mode)"
+            ],
+            "id": "d74315e7-d84e-40b4-8c3c-e9cb0c6c87fe",
+            "source": {
+              "cell": "17ab99b9-e910-462c-858f-f8905065862d"
+            },
+            "target": {
+              "cell": "97a6768c-d981-4293-b393-633fb520a17d"
+            },
+            "vertices": [
+              {
+                "x": -200,
+                "y": -210
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "MQTT publish srv/rescue",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L18",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "L19",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "MQTT publish srv/rescue"
+            ],
+            "id": "9f3dc446-5fa8-44ab-9b9e-3c137ffba48b",
+            "source": {
+              "cell": "fde4d527-38ce-495d-9c09-6ae9325900c0"
+            },
+            "target": {
+              "cell": "a01e2b6e-3430-4fa3-a048-71b5f2a0865c"
+            },
+            "vertices": [
+              {
+                "x": 738.25,
+                "y": -20
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "relay message",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L20",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "L21",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "relay message"
+            ],
+            "id": "638e3e16-7fef-420e-906c-36f017f276a5",
+            "source": {
+              "cell": "58405bff-bbf8-4e89-9379-4393ec749644"
+            },
+            "target": {
+              "cell": "17ab99b9-e910-462c-858f-f8905065862d"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "MQTT Publish",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L22",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                },
+                {
+                  "id": "L23",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "MQTT Publish"
+            ],
+            "id": "fc8cb039-afaf-48b9-85a0-310181c23142",
+            "source": {
+              "cell": "a01e2b6e-3430-4fa3-a048-71b5f2a0865c"
+            },
+            "target": {
+              "cell": "58405bff-bbf8-4e89-9379-4393ec749644"
+            },
+            "vertices": [
+              {
+                "x": 360,
+                "y": -294
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "dispatch instruction",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L24",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 24,
+                  "score": ""
+                },
+                {
+                  "id": "L25",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "dispatch instruction"
+            ],
+            "id": "0dbb959c-56d8-4e61-b5ee-6811617354b1",
+            "source": {
+              "cell": "cd34f866-8ffb-4c13-a4b1-32145621cf11"
+            },
+            "target": {
+              "cell": "ee93cf72-a3ee-4e85-af2a-280648c5a182"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "dispatch instruction ",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L26",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                },
+                {
+                  "id": "L27",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "dispatch instruction "
+            ],
+            "id": "94e6e14c-dc2a-4887-9cf0-655aa964bc25",
+            "source": {
+              "cell": "cd34f866-8ffb-4c13-a4b1-32145621cf11"
+            },
+            "target": {
+              "cell": "17ab99b9-e910-462c-858f-f8905065862d"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "send dispatch instruction",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L28",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                },
+                {
+                  "id": "L29",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "send dispatch instruction"
+            ],
+            "id": "c4d69a8d-67af-41fb-bf95-a4d0bec40e25",
+            "source": {
+              "cell": "7e29d904-0fe3-4162-b3d2-ed7cf1fef279"
+            },
+            "target": {
+              "cell": "a19fd42b-a0b5-4934-9ae8-7e61468256de"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "survivor data (query response)",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L30",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 30,
+                  "score": ""
+                },
+                {
+                  "id": "L31",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "survivor data (query response)"
+            ],
+            "id": "9fbf1362-61ee-4909-8545-3d2de4365896",
+            "source": {
+              "cell": "be87884f-547c-4c9f-b975-6ca53e4b7e4d"
+            },
+            "target": {
+              "cell": "44151a1f-d456-433d-b6ba-0e671bdfc5b6"
+            },
+            "vertices": [
+              {
+                "x": 90,
+                "y": 150
+              }
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "query survivor data",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L32",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                },
+                {
+                  "id": "L33",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 33,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "query survivor data"
+            ],
+            "id": "13cdeee3-805a-4337-9139-78e7fd7eef16",
+            "source": {
+              "cell": "44151a1f-d456-433d-b6ba-0e671bdfc5b6"
+            },
+            "target": {
+              "cell": "be87884f-547c-4c9f-b975-6ca53e4b7e4d"
+            },
+            "vertices": [
+              {
+                "x": 100,
+                "y": 20
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "send processed data",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L34",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 34,
+                  "score": ""
+                },
+                {
+                  "id": "L35",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 35,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "send processed data"
+            ],
+            "id": "1ea32d15-2e30-4a7e-ab77-3ec178f652d2",
+            "source": {
+              "cell": "44151a1f-d456-433d-b6ba-0e671bdfc5b6"
+            },
+            "target": {
+              "cell": "d890fccd-c5b5-415f-b9b5-b0a209ddfe38"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "view dashboard & alerts",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L36",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 36,
+                  "score": ""
+                },
+                {
+                  "id": "L37",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 37,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "view dashboard & alerts"
+            ],
+            "id": "852e2ece-4a02-4c8a-9d2b-32c55a9ce9e6",
+            "source": {
+              "cell": "3c1372d1-d3c7-4236-9def-fa6b05520e20"
+            },
+            "target": {
+              "cell": "a19fd42b-a0b5-4934-9ae8-7e61468256de"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "generate graphics",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L38",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 38,
+                  "score": ""
+                },
+                {
+                  "id": "L39",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 39,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "generate graphics"
+            ],
+            "id": "9ced7527-66de-4a24-ab6e-176faf0297d9",
+            "source": {
+              "cell": "d890fccd-c5b5-415f-b9b5-b0a209ddfe38"
+            },
+            "target": {
+              "cell": "3c1372d1-d3c7-4236-9def-fa6b05520e20"
+            },
+            "vertices": [
+              {
+                "x": 530,
+                "y": 230
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "give commands to drones",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "L40",
+                  "title": "Unencrypted MQTT Communication",
+                  "type": "Disclosure of Information",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "MQTT message payloads are transmitted without encryption, exposing sensitive victim location and health data to potential eavesdropping.",
+                  "mitigation": "Use TLS to encrypt all MQTT communications.",
+                  "new": false,
+                  "number": 40,
+                  "score": ""
+                },
+                {
+                  "id": "L41",
+                  "title": "Topic-Based Message Linkability",
+                  "type": "Linkability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Consistent MQTT topics allow attackers to correlate messages and infer user behavior or ongoing operations.",
+                  "mitigation": "Randomize or obfuscate topic structures and minimize persistent identifiers.",
+                  "new": false,
+                  "number": 41,
+                  "score": ""
+                }
+              ]
+            },
+            "labels": [
+              "give commands to drones"
+            ],
+            "id": "021d17e0-e33a-4ce9-a1a5-f8b0f4b22c3e",
+            "source": {
+              "cell": "3c1372d1-d3c7-4236-9def-fa6b05520e20"
+            },
+            "target": {
+              "cell": "cd34f866-8ffb-4c13-a4b1-32145621cf11"
+            }
+          },
+          {
+            "position": {
+              "x": 361,
+              "y": -220.00000000000114
+            },
+            "size": {
+              "width": 190,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "MQTT Command Rx"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 11,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "81499e54-451c-4c66-abb4-2041021a61e8"
+                },
+                {
+                  "group": "right",
+                  "id": "a7cb0ee6-57d8-4e9f-be87-783c7da098dc"
+                },
+                {
+                  "group": "bottom",
+                  "id": "df66d6dd-b216-4565-986a-67b6878b0bab"
+                },
+                {
+                  "group": "left",
+                  "id": "05392fbc-91d0-4d75-9802-37962135832e"
+                }
+              ]
+            },
+            "id": "ee93cf72-a3ee-4e85-af2a-280648c5a182",
+            "data": {
+              "type": "tm.Process",
+              "name": "MQTT Command Rx",
+              "description": "Listens for command messages (e.g., dispatch instructions) and triggers corresponding actions in the system.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L42",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 42,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 410,
+              "y": -360.000000000002
+            },
+            "size": {
+              "width": 200,
+              "height": 120
+            },
+            "attrs": {
+              "text": {
+                "text": "MQTT Rx "
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 12,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "629d757a-f2da-4c58-9229-a6a364da2fdf"
+                },
+                {
+                  "group": "right",
+                  "id": "42930945-ad4e-439e-b883-3439b73a25a3"
+                },
+                {
+                  "group": "bottom",
+                  "id": "d0c03b24-1d48-4db4-ae00-bdd2fb15d222"
+                },
+                {
+                  "group": "left",
+                  "id": "991b1090-d45b-46d4-b71d-475c584b63be"
+                }
+              ]
+            },
+            "id": "a01e2b6e-3430-4fa3-a048-71b5f2a0865c",
+            "data": {
+              "type": "tm.Process",
+              "name": "MQTT Rx ",
+              "description": "Subscribes to MQTT topics to receive and process incoming messages like victim data or rescue updates.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L43",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 43,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 201,
+              "y": -330.00000000000114
+            },
+            "size": {
+              "width": 110,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "MQTT Tx"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 13,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "ce00ce8c-6104-47f7-96bf-b6eb58820b64"
+                },
+                {
+                  "group": "right",
+                  "id": "5c816e21-5e5f-4854-b37f-7c4b6c9b1bd5"
+                },
+                {
+                  "group": "bottom",
+                  "id": "66716d2d-df75-4d0d-971f-2b315be7a565"
+                },
+                {
+                  "group": "left",
+                  "id": "b3956baf-fff2-43cb-bf0b-ddac055abff6"
+                }
+              ]
+            },
+            "id": "58405bff-bbf8-4e89-9379-4393ec749644",
+            "data": {
+              "type": "tm.Process",
+              "name": "MQTT Tx",
+              "description": "Publishes messages (e.g., rescue requests, sensor data) to the MQTT broker for system-wide distribution.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L44",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 44,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 370,
+              "y": 90
+            },
+            "size": {
+              "width": 210,
+              "height": 120
+            },
+            "attrs": {
+              "text": {
+                "text": "Drone Command"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 14,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "9a6dbb6b-4bbe-49e4-ae25-8d0c10285b81"
+                },
+                {
+                  "group": "right",
+                  "id": "710b5f3a-b395-481c-a857-1076b831c64e"
+                },
+                {
+                  "group": "bottom",
+                  "id": "e69076fd-749a-4b55-a4a7-e8dde03b188f"
+                },
+                {
+                  "group": "left",
+                  "id": "577f4194-e413-4682-84bf-ad5309ebd6ac"
+                }
+              ]
+            },
+            "id": "cd34f866-8ffb-4c13-a4b1-32145621cf11",
+            "data": {
+              "type": "tm.Process",
+              "name": "Drone Command",
+              "description": "Sends operator commands to drones via MQTT.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L45",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 45,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 226,
+              "y": 120
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Query"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 15,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "fbbc1f75-956a-4ed0-b60b-eefb787186fd"
+                },
+                {
+                  "group": "right",
+                  "id": "c3519e96-dfdf-4005-8322-400c6dfd20ca"
+                },
+                {
+                  "group": "bottom",
+                  "id": "9b031a98-d291-428f-bd67-f25052592d69"
+                },
+                {
+                  "group": "left",
+                  "id": "ba44d351-5775-488d-8611-6e2bf647f54f"
+                }
+              ]
+            },
+            "id": "44151a1f-d456-433d-b6ba-0e671bdfc5b6",
+            "data": {
+              "type": "tm.Process",
+              "name": "Query",
+              "description": "Pulls filtered survivor data from the SQL Database.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L46",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 46,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 326,
+              "y": 270
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "UI"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 16,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "20a93eae-9e9b-4b71-9dba-d45530d22769"
+                },
+                {
+                  "group": "right",
+                  "id": "350a14a9-a299-4af0-ba75-0cf1a94ebecb"
+                },
+                {
+                  "group": "bottom",
+                  "id": "4dba6166-c3b1-49e6-b36d-1cffcc8dab4e"
+                },
+                {
+                  "group": "left",
+                  "id": "12f04bef-4026-4b6b-ba85-f31e3408ad9d"
+                }
+              ]
+            },
+            "id": "a19fd42b-a0b5-4934-9ae8-7e61468256de",
+            "data": {
+              "type": "tm.Process",
+              "name": "UI",
+              "description": "Displays alerts, maps, and allows the CMC Operator to send commands.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "L47",
+                  "title": "Drone Message Identifiability",
+                  "type": "Identifiability",
+                  "modelType": "LINDDUN",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Drone message payloads may include metadata that can be linked to specific victims or responders.",
+                  "mitigation": "Minimize metadata and use pseudonyms for message identifiers.",
+                  "new": false,
+                  "number": 47,
+                  "score": ""
+                }
+              ]
+            }
+          }
+        ],
+        "description": "Rescue System "
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 8
+  }
+}
